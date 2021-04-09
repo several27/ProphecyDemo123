@@ -255,6 +255,7 @@
       },
       "CustomersOrders" : {
         "component" : "Target",
+        "group" : null,
         "properties" : {
           "interim" : false,
           "cache" : false,
@@ -263,12 +264,92 @@
         },
         "metadata" : {
           "label" : "CustomersOrders",
-          "x" : 683,
+          "x" : 834,
           "y" : 190
         },
         "ports" : {
           "inputs" : [ "in" ],
           "outputs" : [ ]
+        },
+        "lineage" : ""
+      },
+      "Aggregate0" : {
+        "component" : "Aggregate",
+        "properties" : {
+          "interim" : false,
+          "cache" : false,
+          "aggcols" : [ {
+            "targetCol" : "first_name",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(first_name)"
+            }
+          }, {
+            "targetCol" : "last_name",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(last_name)"
+            }
+          }, {
+            "targetCol" : "phone",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(phone)"
+            }
+          }, {
+            "targetCol" : "sum_amounts",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "sum(amount)"
+            }
+          }, {
+            "targetCol" : "order_date",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(order_date)"
+            }
+          }, {
+            "targetCol" : "order_status",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(order_status)"
+            }
+          }, {
+            "targetCol" : "order_category",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(order_category)"
+            }
+          }, {
+            "targetCol" : "customer_id",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(customer_id)"
+            }
+          }, {
+            "targetCol" : "full_name",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(full_name)"
+            }
+          } ],
+          "columns" : [ {
+            "targetCol" : "order_id",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "order_id"
+            }
+          } ],
+          "opType" : "groupBy"
+        },
+        "metadata" : {
+          "label" : "Aggregate0",
+          "x" : 687,
+          "y" : 189
+        },
+        "ports" : {
+          "inputs" : [ "in" ],
+          "outputs" : [ "out" ]
         },
         "lineage" : ""
       }
@@ -318,18 +399,31 @@
         "port" : "out"
       },
       "tgt" : {
+        "process" : "Aggregate0",
+        "port" : "in"
+      },
+      "metadata" : {
+        "route" : "e_HyaZeXASO"
+      },
+      "lineage" : ""
+    }, {
+      "src" : {
+        "process" : "Aggregate0",
+        "port" : "out"
+      },
+      "tgt" : {
         "process" : "CustomersOrders",
         "port" : "in"
       },
       "metadata" : {
-        "route" : "e_HyksyXRS_"
+        "route" : "e_HkJMlQRHO"
       },
       "lineage" : ""
     } ],
     "groups" : [ ],
     "locked" : false,
     "metainfo" : {
-      "lastUpdated" : 1617993668106,
+      "lastUpdated" : 1617993783737,
       "id" : "DemoWorkflow",
       "memory" : 1,
       "imported" : true,

@@ -19,11 +19,12 @@ object Main {
 
   def graph(spark: SparkSession): Unit = {
 
-    val df_Customers:     Source   = Customers(spark)
-    val df_Orders:        Source   = Orders(spark)
-    val df_By_CustomerId: Join     = By_CustomerId(spark, df_Customers, df_Orders)
-    val df_FullName:      Reformat = FullName(spark,      df_By_CustomerId)
-    CustomersOrders(spark, df_FullName)
+    val df_Customers:     Source    = Customers(spark)
+    val df_Orders:        Source    = Orders(spark)
+    val df_By_CustomerId: Join      = By_CustomerId(spark, df_Customers, df_Orders)
+    val df_FullName:      Reformat  = FullName(spark,      df_By_CustomerId)
+    val df_Aggregate0:    Aggregate = Aggregate0(spark,    df_FullName)
+    CustomersOrders(spark, df_Aggregate0)
 
   }
 
