@@ -1,0 +1,70 @@
+{
+  "datasetId" : "1468",
+  "schema" : {
+    "type" : "struct",
+    "fields" : [ {
+      "name" : "first_name",
+      "type" : "string",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "last_name",
+      "type" : "string",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "phone",
+      "type" : "string",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "amount",
+      "type" : "double",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "order_date",
+      "type" : "timestamp",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "order_status",
+      "type" : "string",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "order_category",
+      "type" : "string",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "order_id",
+      "type" : "integer",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "customer_id",
+      "type" : "integer",
+      "nullable" : false,
+      "metadata" : { }
+    }, {
+      "name" : "full_name",
+      "type" : "string",
+      "nullable" : false,
+      "metadata" : { }
+    } ]
+  },
+  "datasetType" : "File",
+  "description" : "",
+  "commonProperties" : {
+    "properties" : {
+      "location" : "dbfs:/Prophecy/aayushman@prophecy.io/CustomersOrdersOutput.parq"
+    }
+  },
+  "dataFormat" : "parquet",
+  "outputProperties" : {
+    "properties" : {
+      "mode" : "overwrite"
+    }
+  }
+}
