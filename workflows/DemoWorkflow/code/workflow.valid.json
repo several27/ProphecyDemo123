@@ -129,66 +129,95 @@
           "interim" : true,
           "cache" : false,
           "functions" : [ {
+            "addReplaceColumn" : "first_name",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"first_name\")"
             } ],
-            "addReplaceColumn" : "first_name"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "last_name",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"last_name\")"
             } ],
-            "addReplaceColumn" : "last_name"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "phone",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"phone\")"
             } ],
-            "addReplaceColumn" : "phone"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "amount",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"amount\")"
             } ],
-            "addReplaceColumn" : "amount"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "order_date",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"order_date\")"
             } ],
-            "addReplaceColumn" : "order_date"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "order_status",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"order_status\")"
             } ],
-            "addReplaceColumn" : "order_status"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "order_category",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"order_category\")"
             } ],
-            "addReplaceColumn" : "order_category"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "order_id",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"order_id\")"
             } ],
-            "addReplaceColumn" : "order_id"
+            "comment" : null,
+            "enabled" : true
           }, {
+            "addReplaceColumn" : "customer_id",
+            "functionName" : null,
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "col(\"customer_id\")"
             } ],
-            "addReplaceColumn" : "customer_id"
+            "comment" : null,
+            "enabled" : true
           }, {
             "addReplaceColumn" : "full_name",
             "functionName" : "column_expression",
             "inputArgs" : [ {
               "type" : "scala",
               "expr" : "concat(col(\"first_name\"), col(\"last_name\"))"
-            } ]
+            } ],
+            "comment" : null,
+            "enabled" : true
           } ]
         },
         "metadata" : {
@@ -204,6 +233,7 @@
       },
       "Reformat0" : {
         "component" : "Reformat",
+        "group" : null,
         "properties" : {
           "interim" : true,
           "cache" : false,
@@ -277,7 +307,7 @@
     "groups" : [ ],
     "locked" : false,
     "metainfo" : {
-      "lastUpdated" : 1617993511151,
+      "lastUpdated" : 1617993527471,
       "id" : "DemoWorkflow",
       "memory" : 1,
       "imported" : true,
