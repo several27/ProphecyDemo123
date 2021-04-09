@@ -1,96 +1,10 @@
 {
-  "resolvers" : [ ],
   "graph" : {
-    "metainfo" : {
-      "cluster" : "local",
-      "id" : "id",
-      "memory" : 1,
-      "mode" : "batch",
-      "processors" : 1,
-      "language" : "scala",
-      "interimMode" : "full",
-      "udfs" : {
-        "language" : "scala",
-        "udfs" : [ ]
-      },
-      "sparkOptions" : {
-        "options" : {
-          "spark.app.name" : "DemoWorkflow",
-          "spark.sql.catalogImplementation" : "hive"
-        }
-      }
-    },
-    "connections" : [ {
-      "metadata" : {
-        "route" : "e1"
-      },
-      "src" : {
-        "port" : "out",
-        "process" : "Customers"
-      },
-      "tgt" : {
-        "port" : "left",
-        "process" : "By_CustomerId"
-      }
-    }, {
-      "metadata" : {
-        "route" : "e2"
-      },
-      "src" : {
-        "port" : "out",
-        "process" : "Orders"
-      },
-      "tgt" : {
-        "port" : "right",
-        "process" : "By_CustomerId"
-      }
-    }, {
-      "metadata" : {
-        "route" : "e3"
-      },
-      "src" : {
-        "port" : "out",
-        "process" : "By_CustomerId"
-      },
-      "tgt" : {
-        "port" : "in",
-        "process" : "FullName"
-      }
-    }, {
-      "metadata" : {
-        "route" : "e4"
-      },
-      "src" : {
-        "port" : "out",
-        "process" : "FullName"
-      },
-      "tgt" : {
-        "port" : "in",
-        "process" : "Reformat0"
-      }
-    } ],
-    "groups" : [ ],
-    "inports" : { },
-    "outports" : { },
     "processes" : {
       "By_CustomerId" : {
         "component" : "Join",
-        "metadata" : {
-          "label" : "By CustomerId",
-          "x" : 377,
-          "y" : 188
-        },
-        "ports" : {
-          "inputs" : [ "left", "right" ],
-          "outputs" : [ "out" ]
-        },
+        "group" : null,
         "properties" : {
-          "src_desc" : "",
-          "phase" : 0,
-          "joinCondition" : {
-            "format" : "scala",
-            "expr" : "col(\"left.customer_id\") === col(\"right.customer_id\")"
-          },
           "selectColumns" : [ {
             "targetCol" : "first_name",
             "isLeftTableCol" : true,
@@ -155,25 +69,32 @@
               "expr" : "col(\"left.customer_id\")"
             }
           } ],
-          "ramp" : 0,
-          "detailedStats" : false,
-          "udf_definitions" : [ ],
           "joinType" : "inner",
+          "src_desc" : "",
+          "detailedStats" : false,
+          "joinCondition" : {
+            "format" : "scala",
+            "expr" : "col(\"left.customer_id\") === col(\"right.customer_id\")"
+          },
+          "ramp" : 0,
+          "udf_definitions" : [ ],
+          "phase" : 0,
           "limit" : 0
         },
-        "ignore" : false
+        "metadata" : {
+          "label" : "By CustomerId",
+          "x" : 377,
+          "y" : 188
+        },
+        "ports" : {
+          "inputs" : [ "left", "right" ],
+          "outputs" : [ "out" ]
+        },
+        "lineage" : ""
       },
       "Customers" : {
         "component" : "Source",
-        "metadata" : {
-          "label" : "Customers",
-          "x" : 151,
-          "y" : 111
-        },
-        "ports" : {
-          "inputs" : [ ],
-          "outputs" : [ "out" ]
-        },
+        "group" : null,
         "properties" : {
           "src_desc" : "",
           "phase" : 0,
@@ -184,19 +105,20 @@
           "udf_definitions" : [ ],
           "limit" : 0
         },
-        "ignore" : false
+        "metadata" : {
+          "label" : "Customers",
+          "x" : 151,
+          "y" : 111
+        },
+        "ports" : {
+          "inputs" : [ ],
+          "outputs" : [ "out" ]
+        },
+        "lineage" : ""
       },
       "Reformat0" : {
         "component" : "Reformat",
-        "metadata" : {
-          "label" : "Reformat0",
-          "x" : 683,
-          "y" : 192
-        },
-        "ports" : {
-          "inputs" : [ "in" ],
-          "outputs" : [ "out" ]
-        },
+        "group" : null,
         "properties" : {
           "src_desc" : "",
           "phase" : 0,
@@ -206,10 +128,109 @@
           "functions" : [ ],
           "limit" : 0
         },
-        "ignore" : false
+        "metadata" : {
+          "label" : "Reformat0",
+          "x" : 683,
+          "y" : 192
+        },
+        "ports" : {
+          "inputs" : [ "in" ],
+          "outputs" : [ "out" ]
+        },
+        "lineage" : ""
       },
       "FullName" : {
         "component" : "Reformat",
+        "group" : null,
+        "properties" : {
+          "src_desc" : "",
+          "phase" : 0,
+          "ramp" : 0,
+          "detailedStats" : false,
+          "udf_definitions" : [ ],
+          "functions" : [ {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "first_name"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "first_name"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "last_name"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "last_name"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "phone"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "phone"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "amount"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "amount"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "order_date"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "order_date"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "order_status"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "order_status"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "order_category"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "order_category"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "order_id"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "order_id"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "customer_id"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "customer_id"
+          }, {
+            "inputArgs" : [ {
+              "type" : "sql",
+              "expr" : "concat(first_name, ' - ', last_name)"
+            } ],
+            "functionName" : "column_expression",
+            "enabled" : true,
+            "addReplaceColumn" : "full_name"
+          } ],
+          "limit" : 0
+        },
         "metadata" : {
           "label" : "FullName",
           "x" : 541,
@@ -219,108 +240,11 @@
           "inputs" : [ "in" ],
           "outputs" : [ "out" ]
         },
-        "properties" : {
-          "src_desc" : "",
-          "phase" : 0,
-          "ramp" : 0,
-          "detailedStats" : false,
-          "udf_definitions" : [ ],
-          "functions" : [ {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "first_name",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"first_name\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "last_name",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"last_name\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "phone",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"phone\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "amount",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"amount\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "order_date",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"order_date\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "order_status",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"order_status\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "order_category",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"order_category\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "order_id",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"order_id\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "customer_id",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "col(\"customer_id\")"
-            } ],
-            "enabled" : true
-          }, {
-            "functionName" : "column_expression",
-            "addReplaceColumn" : "full_name",
-            "inputArgs" : [ {
-              "type" : "scala",
-              "expr" : "concat(col(\"first_name\"), lit(\" - \"), col(\"last_name\"))"
-            } ],
-            "enabled" : true
-          } ],
-          "limit" : 0
-        },
-        "ignore" : false
+        "lineage" : ""
       },
       "Orders" : {
         "component" : "Source",
-        "metadata" : {
-          "label" : "Orders",
-          "x" : 148,
-          "y" : 255
-        },
-        "ports" : {
-          "inputs" : [ ],
-          "outputs" : [ "out" ]
-        },
+        "group" : null,
         "properties" : {
           "src_desc" : "",
           "phase" : 0,
@@ -331,8 +255,95 @@
           "udf_definitions" : [ ],
           "limit" : 0
         },
-        "ignore" : false
+        "metadata" : {
+          "label" : "Orders",
+          "x" : 148,
+          "y" : 255
+        },
+        "ports" : {
+          "inputs" : [ ],
+          "outputs" : [ "out" ]
+        },
+        "lineage" : ""
       }
-    }
+    },
+    "connections" : [ {
+      "src" : {
+        "process" : "Customers",
+        "port" : "out"
+      },
+      "tgt" : {
+        "process" : "By_CustomerId",
+        "port" : "left"
+      },
+      "metadata" : {
+        "route" : "e1"
+      },
+      "lineage" : ""
+    }, {
+      "src" : {
+        "process" : "Orders",
+        "port" : "out"
+      },
+      "tgt" : {
+        "process" : "By_CustomerId",
+        "port" : "right"
+      },
+      "metadata" : {
+        "route" : "e2"
+      },
+      "lineage" : ""
+    }, {
+      "src" : {
+        "process" : "By_CustomerId",
+        "port" : "out"
+      },
+      "tgt" : {
+        "process" : "FullName",
+        "port" : "in"
+      },
+      "metadata" : {
+        "route" : "e3"
+      },
+      "lineage" : ""
+    }, {
+      "src" : {
+        "process" : "FullName",
+        "port" : "out"
+      },
+      "tgt" : {
+        "process" : "Reformat0",
+        "port" : "in"
+      },
+      "metadata" : {
+        "route" : "e4"
+      },
+      "lineage" : ""
+    } ],
+    "groups" : [ ],
+    "locked" : false,
+    "metainfo" : {
+      "lastUpdated" : 1617993605108,
+      "id" : "DemoWorkflow",
+      "memory" : 1,
+      "imported" : true,
+      "language" : "scala",
+      "processors" : 1,
+      "cluster" : "local",
+      "mode" : "batch",
+      "interimMode" : "full",
+      "udfs" : {
+        "language" : "scala",
+        "udfs" : [ ]
+      },
+      "sparkOptions" : {
+        "options" : {
+          "spark.app.name" : "DemoWorkflow",
+          "spark.sql.catalogImplementation" : "hive"
+        }
+      }
+    },
+    "inports" : { },
+    "outports" : { }
   }
 }
