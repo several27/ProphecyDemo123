@@ -157,7 +157,8 @@
               "expr" : "first_name"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "last_name",
             "functionName" : "column_expression",
@@ -166,7 +167,8 @@
               "expr" : "last_name"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "phone",
             "functionName" : "column_expression",
@@ -175,7 +177,8 @@
               "expr" : "phone"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "amount",
             "functionName" : "column_expression",
@@ -184,7 +187,8 @@
               "expr" : "amount"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "order_date",
             "functionName" : "column_expression",
@@ -193,7 +197,8 @@
               "expr" : "order_date"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "order_status",
             "functionName" : "column_expression",
@@ -202,7 +207,8 @@
               "expr" : "order_status"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "order_category",
             "functionName" : "column_expression",
@@ -211,7 +217,8 @@
               "expr" : "order_category"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "order_id",
             "functionName" : "column_expression",
@@ -220,7 +227,8 @@
               "expr" : "order_id"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "customer_id",
             "functionName" : "column_expression",
@@ -229,7 +237,8 @@
               "expr" : "customer_id"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           }, {
             "addReplaceColumn" : "full_name",
             "functionName" : "column_expression",
@@ -238,7 +247,8 @@
               "expr" : "concat(first_name, ' - ', last_name)"
             } ],
             "comment" : null,
-            "enabled" : true
+            "enabled" : true,
+            "disabled" : false
           } ],
           "limit" : 0
         },
@@ -424,7 +434,7 @@
     "groups" : [ ],
     "locked" : false,
     "metainfo" : {
-      "lastUpdated" : 1617994090652,
+      "lastUpdated" : 1617994281881,
       "id" : "DemoWorkflow",
       "memory" : 1,
       "imported" : true,
