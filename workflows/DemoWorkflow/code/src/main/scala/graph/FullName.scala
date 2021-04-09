@@ -15,13 +15,24 @@ import config.ConfigStore._
 import udfs.UDFs._
 import graph._
 
-@Visual(id = "Reformat0", label = "Reformat0", x = 683, y = 192, phase = 0)
-object Reformat0 {
+@Visual(id = "FullName", label = "FullName", x = 541, y = 188, phase = 0)
+object FullName {
 
   def apply(spark: SparkSession, in: DataFrame): Reformat = {
     import spark.implicits._
 
-    val out = in
+    val out = in.select(
+      col("first_name"),
+      col("last_name"),
+      col("phone"),
+      col("amount"),
+      col("order_date"),
+      col("order_status"),
+      col("order_category"),
+      col("order_id"),
+      col("customer_id"),
+      concat(col("first_name"), col("last_name")).as("full_name")
+    )
 
     out
 

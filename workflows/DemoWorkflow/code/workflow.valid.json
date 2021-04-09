@@ -3,6 +3,7 @@
     "processes" : {
       "Customers" : {
         "component" : "Source",
+        "group" : null,
         "properties" : {
           "interim" : false,
           "cache" : false,
@@ -22,6 +23,7 @@
       },
       "Orders" : {
         "component" : "Source",
+        "group" : null,
         "properties" : {
           "interim" : false,
           "cache" : false,
@@ -41,6 +43,7 @@
       },
       "By_CustomerId" : {
         "component" : "Join",
+        "group" : null,
         "properties" : {
           "udf_definitions" : [ ],
           "limit" : 0,
@@ -119,6 +122,86 @@
         },
         "lineage" : ""
       },
+      "FullName" : {
+        "component" : "Reformat",
+        "group" : null,
+        "properties" : {
+          "interim" : true,
+          "cache" : false,
+          "functions" : [ {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"first_name\")"
+            } ],
+            "addReplaceColumn" : "first_name"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"last_name\")"
+            } ],
+            "addReplaceColumn" : "last_name"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"phone\")"
+            } ],
+            "addReplaceColumn" : "phone"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"amount\")"
+            } ],
+            "addReplaceColumn" : "amount"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"order_date\")"
+            } ],
+            "addReplaceColumn" : "order_date"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"order_status\")"
+            } ],
+            "addReplaceColumn" : "order_status"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"order_category\")"
+            } ],
+            "addReplaceColumn" : "order_category"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"order_id\")"
+            } ],
+            "addReplaceColumn" : "order_id"
+          }, {
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "col(\"customer_id\")"
+            } ],
+            "addReplaceColumn" : "customer_id"
+          }, {
+            "addReplaceColumn" : "full_name",
+            "functionName" : "column_expression",
+            "inputArgs" : [ {
+              "type" : "scala",
+              "expr" : "concat(col(\"first_name\"), col(\"last_name\"))"
+            } ]
+          } ]
+        },
+        "metadata" : {
+          "label" : "FullName",
+          "x" : 541,
+          "y" : 188
+        },
+        "ports" : {
+          "inputs" : [ "in" ],
+          "outputs" : [ "out" ]
+        },
+        "lineage" : ""
+      },
       "Reformat0" : {
         "component" : "Reformat",
         "properties" : {
@@ -128,8 +211,8 @@
         },
         "metadata" : {
           "label" : "Reformat0",
-          "x" : 541,
-          "y" : 188
+          "x" : 683,
+          "y" : 192
         },
         "ports" : {
           "inputs" : [ "in" ],
@@ -170,18 +253,31 @@
         "port" : "out"
       },
       "tgt" : {
-        "process" : "Reformat0",
+        "process" : "FullName",
         "port" : "in"
       },
       "metadata" : {
         "route" : "e_rkH9AMRru"
       },
       "lineage" : ""
+    }, {
+      "src" : {
+        "process" : "FullName",
+        "port" : "out"
+      },
+      "tgt" : {
+        "process" : "Reformat0",
+        "port" : "in"
+      },
+      "metadata" : {
+        "route" : "e_HkRXkXASO"
+      },
+      "lineage" : ""
     } ],
     "groups" : [ ],
     "locked" : false,
     "metainfo" : {
-      "lastUpdated" : 1617993358816,
+      "lastUpdated" : 1617993511151,
       "id" : "DemoWorkflow",
       "memory" : 1,
       "imported" : true,
