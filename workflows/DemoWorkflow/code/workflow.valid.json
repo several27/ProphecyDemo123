@@ -302,7 +302,7 @@
             "addReplaceColumn" : "full_name",
             "inputArgs" : [ {
               "type" : "scala",
-              "expr" : "concat(col(\"first_name\"), lit(\" - \") col \"last_name\")"
+              "expr" : "concat(col(\"first_name\"), lit(\" - \"), col(\"last_name\"))"
             } ],
             "enabled" : true
           } ],

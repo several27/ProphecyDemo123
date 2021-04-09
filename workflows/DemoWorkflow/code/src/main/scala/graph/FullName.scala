@@ -31,7 +31,7 @@ object FullName {
       col("order_category"),
       col("order_id"),
       col("customer_id"),
-      concat(col("first_name"), lit(" - ") col("last_name")).as("full_name")
+      concat(col("first_name"), lit(" - "), col("last_name")).as("full_name")
     )
 
     out
