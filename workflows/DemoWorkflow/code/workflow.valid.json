@@ -322,16 +322,16 @@
               "expr" : "max(order_category)"
             }
           }, {
-            "targetCol" : "customer_id",
-            "expression" : {
-              "format" : "sql",
-              "expr" : "max(customer_id)"
-            }
-          }, {
             "targetCol" : "full_name",
             "expression" : {
               "format" : "sql",
               "expr" : "max(full_name)"
+            }
+          }, {
+            "targetCol" : "order_id",
+            "expression" : {
+              "format" : "sql",
+              "expr" : "max(order_id)"
             }
           } ],
           "columns" : [ {
@@ -424,7 +424,7 @@
     "groups" : [ ],
     "locked" : false,
     "metainfo" : {
-      "lastUpdated" : 1617993804307,
+      "lastUpdated" : 1617993843855,
       "id" : "DemoWorkflow",
       "memory" : 1,
       "imported" : true,

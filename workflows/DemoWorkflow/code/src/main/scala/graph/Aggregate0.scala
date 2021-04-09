@@ -30,8 +30,8 @@ object Aggregate0 {
       max(col("order_date")).as("order_date"),
       max(col("order_status")).as("order_status"),
       max(col("order_category")).as("order_category"),
-      max(col("customer_id")).as("customer_id"),
-      max(col("full_name")).as("full_name")
+      max(col("full_name")).as("full_name"),
+      max(col("order_id")).as("order_id")
     )
 
     out
