@@ -275,6 +275,7 @@
       },
       "Aggregate0" : {
         "component" : "Aggregate",
+        "group" : null,
         "properties" : {
           "interim" : false,
           "cache" : false,
@@ -334,10 +335,10 @@
             }
           } ],
           "columns" : [ {
-            "targetCol" : "order_id",
+            "targetCol" : "customer_id",
             "expression" : {
               "format" : "sql",
-              "expr" : "order_id"
+              "expr" : "customer_id"
             }
           } ],
           "opType" : "groupBy"
@@ -423,7 +424,7 @@
     "groups" : [ ],
     "locked" : false,
     "metainfo" : {
-      "lastUpdated" : 1617993783737,
+      "lastUpdated" : 1617993804307,
       "id" : "DemoWorkflow",
       "memory" : 1,
       "imported" : true,
