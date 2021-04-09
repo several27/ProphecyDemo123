@@ -1,5 +1,8 @@
 {
+  "description" : "",
   "datasetId" : "1466",
+  "dataFormat" : "csv",
+  "datasetType" : "File",
   "schema" : {
     "type" : "struct",
     "fields" : [ {
@@ -44,19 +47,15 @@
       "metadata" : { }
     } ]
   },
-  "datasetType" : "File",
-  "description" : "",
   "commonProperties" : {
     "properties" : {
       "location" : "dbfs:/Prophecy/aayushman@prophecy.io/CustomersDatasetInput.csv"
     }
   },
-  "dataFormat" : "csv",
   "inputProperties" : {
     "properties" : {
       "sep" : ",",
-      "header" : "true",
-      "inferSchema" : "true"
+      "header" : true
     }
   }
 }

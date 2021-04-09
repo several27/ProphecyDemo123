@@ -1,5 +1,8 @@
 {
+  "description" : "",
   "datasetId" : "1467",
+  "dataFormat" : "csv",
+  "datasetType" : "File",
   "schema" : {
     "type" : "struct",
     "fields" : [ {
@@ -34,19 +37,15 @@
       "metadata" : { }
     } ]
   },
-  "datasetType" : "File",
-  "description" : "",
   "commonProperties" : {
     "properties" : {
       "location" : "dbfs:/Prophecy/aayushman@prophecy.io/OrdersDatasetInput.csv"
     }
   },
-  "dataFormat" : "csv",
   "inputProperties" : {
     "properties" : {
       "sep" : ",",
-      "header" : "true",
-      "inferSchema" : "true"
+      "header" : true
     }
   }
 }
